@@ -12,11 +12,30 @@
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/landing-page.css" rel="stylesheet"/>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-    
+    <link href="css/main.css" rel="stylesheet" />
+
     <!-- Metadata for share buttons -->
     <meta property="og:title" content="AppImage"/>
     <meta property="og:image" content="http://appimage.org/images/logo3.svg"/>
     <meta property="og:description" content="Linux apps that run anywhere"/>
+
+<!--[if lt IE 9]>
+    <script type="application/javascript">
+        document.createElement("article");
+        document.createElement("aside"  );
+        document.createElement("footer" );
+        document.createElement("header" );
+        document.createElement("hgroup" );
+        document.createElement("nav"    );
+        document.createElement("section");
+        document.createElement("time"   );
+    </script>
+    <style>
+        article, aside, footer, header, hgroup, nav, section {
+            display:block;
+        }
+    </style>
+<![endif]-->
 
 </head>
 
@@ -232,6 +251,13 @@
     </div> 
     
 
+    <div id="animation-button-container">
+        <button id="startAnimation" class="btn" type="button">
+            <i class="fa fa-cogs"></i><br/>How it works
+        </button>
+    </div>
+    <div id="appBuildAnimationScene"></div>
+
     <div class="section section-features section-no-padding">
         <div class="container-fluid">
             <div class="row">
@@ -340,6 +366,8 @@
 	<script src="js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>
 
 	<script src="js/bootstrap.js" type="text/javascript"></script>
+    <script src="js/TweenMax.min.js" type="application/javascript"></script>
+    <script src="js/main.js" type="application/javascript"></script>
 
     <script type="text/javascript">
         var big_image;
