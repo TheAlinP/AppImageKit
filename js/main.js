@@ -13,10 +13,65 @@ if (startButton.addEventListener) {
 delete window.startButton;
 
 /**
- * Create the animation function
+ * Run the animation automatically when the the viewer scrolls to the button
+ */
+// create an Immediately-Invoked Function Expression (IIFE)
+(function () {
+// declare all the variables
+var windowHeight, buttonHeight, distanceFromBottom, lastScrollPosition,
+    currentScrollPosition, buttonOffset, windowOffset;
+// get the window's height in a variable
+windowHeight = document.documentElement.clientHeight || $(window).height();
+// get the button's full height in a variable
+buttonHeight = $("#startAnimation").outerHeight();
+// determine when the button scrolled 1/4 into the window (this is the position
+// of the topmost side of the button in relation to the bottom of the window)
+distanceFromBottom = (windowHeight / 4) - (buttonHeight / 2);
+// get the scroll position. Used for detecting the scroll direction
+lastScrollPosition = $(this).scrollTop();
+// attach a function to the scroll event
+$(window).on("scroll", function () {
+	// run it only if the button doesn't have the class "btnActive"
+	if (!($("#startAnimation").hasClass("btnActive"))) {
+		// get the current scroll position in another variable
+		currentScrollPosition = $(this).scrollTop();
+		// get the button's position from the top of the page
+		buttonOffset = $("#startAnimation").offset().top;
+		// get the scroll distance
+		windowOffset = $(window).scrollTop();
+		// this is how can be detected if it was scrolled down
+		if (currentScrollPosition > lastScrollPosition) {
+			// if the button is somewhere between 1/4 to the bottom of the page
+			// and 50 pixels HIGHER (I need to set a range instead of a fixed
+			// point because on fast scrolls the browser may not be able to
+			// detect when the button is in that position)
+			if ((buttonOffset + buttonHeight - windowOffset) < (windowHeight - distanceFromBottom)
+			    && (buttonOffset + buttonHeight - windowOffset) > (windowHeight - distanceFromBottom - 50)) {
+				// start the animation
+				startAnimation();
+			}
+		// this is how can be detected if it was scrolled up
+		} else if (currentScrollPosition < lastScrollPosition) {
+			// if the button is somewhere between 1/4 to the top of the page
+			// and 50 pixels LOWER (I need to set a range instead of a fixed
+			// point because on fast scrolls the browser may not be able to
+			// detect when the button is in that position)
+			if ((buttonOffset + buttonHeight - windowOffset) > (windowHeight - (windowHeight - distanceFromBottom))
+			    && (buttonOffset + buttonHeight - windowOffset) < (windowHeight - (windowHeight - distanceFromBottom) + 50)) {
+				// start the animation
+				startAnimation();
+			}
+		}
+		// assign the currentScrollPosition value to lastScrollPosition
+		lastScrollPosition = currentScrollPosition;
+	}
+});
+})();
+
+/**
+ * Create the animation
  */
 function startAnimation () {
-	// declare all the variables
 	var fileIconURLs, folderIconURL, portableAppIconURL, animationScene,
 	    startButton, newAppImageKitDiv, appImageKitHeading, progressContainer,
 	    progressMessage, progressBar, fallbackProgressBarContainer,
@@ -198,7 +253,7 @@ function startAnimation () {
 	/**
 	 * Create the icons
 	 */
-	// create an Immediately-Invoked Function Expression (IIFE)
+	// create an immediately-invoked function expression
 	(function() {
 		var i, fileIcon, folderIcon;
 		/* Create the file icons */
@@ -307,7 +362,7 @@ function startAnimation () {
 		// animate the <progress> element's value
 		TweenMax.to(document.querySelector("#appImageKitDiv progress"), 5,
 		            {value:"100"});
-		// create an immediately-invoked function expression
+		// create an IIFE
 		(function() {
 			// create an object with one propriety
 			var progressStatus = { var: 0 };
@@ -403,8 +458,8 @@ function startAnimation () {
 		// get the app's width
 		imageWidth = $("#newApp").outerWidth();
 		// calculate an offset
-		leftOffset = ((document.documentElement.clientWidth || 
-		               document.body.clientWidth || 
+		leftOffset = ((document.documentElement.clientWidth ||
+		               document.body.clientWidth ||
 		               $(window).width()) - imageWidth) / 2;
 		// set an offset
 		document.getElementById("newApp").style.left = leftOffset + "px";
@@ -416,7 +471,7 @@ function startAnimation () {
 		// set the the 3D effect's intensity of the app icon's tilt
 		TweenMax.set(newApp, {transformPerspective:600});
 		// tilt the icon
-		TweenMax.to(newApp, 2, {rotationX:90, 
+		TweenMax.to(newApp, 2, {rotationX:90,
 		            transformOrigin:"center bottom -10", bottom:"-10px",
 		            opacity:"0", onComplete:wrapThingsUp});
 	}
