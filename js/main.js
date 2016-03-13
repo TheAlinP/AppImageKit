@@ -42,22 +42,22 @@ $(window).on("scroll", function () {
 		// this is how can be detected if it was scrolled down
 		if (currentScrollPosition > lastScrollPosition) {
 			// if the button is somewhere between 1/4 to the bottom of the page
-			// and 50 pixels HIGHER (I need to set a range instead of a fixed
+			// and 100 pixels HIGHER (I need to set a range instead of a fixed
 			// point because on fast scrolls the browser may not be able to
 			// detect when the button is in that position)
 			if ((buttonOffset + buttonHeight - windowOffset) < (windowHeight - distanceFromBottom)
-			    && (buttonOffset + buttonHeight - windowOffset) > (windowHeight - distanceFromBottom - 50)) {
+			    && (buttonOffset + buttonHeight - windowOffset) > (windowHeight - distanceFromBottom - 100)) {
 				// start the animation
 				startAnimation();
 			}
 		// this is how can be detected if it was scrolled up
 		} else if (currentScrollPosition < lastScrollPosition) {
 			// if the button is somewhere between 1/4 to the top of the page
-			// and 50 pixels LOWER (I need to set a range instead of a fixed
+			// and 100 pixels LOWER (I need to set a range instead of a fixed
 			// point because on fast scrolls the browser may not be able to
 			// detect when the button is in that position)
 			if ((buttonOffset + buttonHeight - windowOffset) > (windowHeight - (windowHeight - distanceFromBottom))
-			    && (buttonOffset + buttonHeight - windowOffset) < (windowHeight - (windowHeight - distanceFromBottom) + 50)) {
+			    && (buttonOffset + buttonHeight - windowOffset) < (windowHeight - (windowHeight - distanceFromBottom) + 100)) {
 				// start the animation
 				startAnimation();
 			}
@@ -72,22 +72,23 @@ $(window).on("scroll", function () {
  * Create the animation
  */
 function startAnimation () {
-	var fileIconURLs, folderIconURL, portableAppIconURL, animationScene,
-	    startButton, newAppImageKitDiv, appImageKitHeading, progressContainer,
-	    progressMessage, progressBar, fallbackProgressBarContainer,
-	    fallbackProgressBar, leftIcons, rightIcons, middleIcon, tlLeft, tlRight,
-	    tlCenter;
-	// put all the file icons into an array
-	fileIconURLs = ["http://work.alinpasol.com/appimage.org_assets/img/generic-text-file.png",
+	var filesForTheCompiler, regularFiles, folderIcon, portableAppIcon,
+	    animationScene, startButton, newAppDir, AppDirHeading,
+	    progressContainer, progressMessage, progressBar,
+	    fallbackProgressBarContainer, fallbackProgressBar, leftIcons,
+	    rightIcons, middleIcon, tlLeft, tlRight, tlCenter;
+	// put all the files that go into the compiler into an array
+	filesForTheCompiler = ["http://work.alinpasol.com/appimage.org_assets/img/c-source-code.png",
+	                       "http://work.alinpasol.com/appimage.org_assets/img/vala-file.png"];
+	// put all the other files into an array
+	regularFiles = ["http://work.alinpasol.com/appimage.org_assets/img/generic-text-file.png",
 	                "http://work.alinpasol.com/appimage.org_assets/img/binary-file.png",
 	                "http://work.alinpasol.com/appimage.org_assets/img/script-file.png",
 	                "http://work.alinpasol.com/appimage.org_assets/img/font-file.png",
 	                "http://work.alinpasol.com/appimage.org_assets/img/contributors.png",
 	                "http://work.alinpasol.com/appimage.org_assets/img/markup-language-file.png",
 	                "http://work.alinpasol.com/appimage.org_assets/img/database.png",
-	                "http://work.alinpasol.com/appimage.org_assets/img/c-source-code.png",
 	                "http://work.alinpasol.com/appimage.org_assets/img/python-source-code.png",
-	                "http://work.alinpasol.com/appimage.org_assets/img/vala-file.png",
 	                "http://work.alinpasol.com/appimage.org_assets/img/perl-source-code.png",
 	                "http://work.alinpasol.com/appimage.org_assets/img/office-document.png",
 	                "http://work.alinpasol.com/appimage.org_assets/img/generic-file.png",
@@ -95,13 +96,11 @@ function startAnimation () {
 	                "http://work.alinpasol.com/appimage.org_assets/img/generic-compressed-file.png",
 	                "http://work.alinpasol.com/appimage.org_assets/img/java-source-code.png",
 	                "http://work.alinpasol.com/appimage.org_assets/img/changelog-file.png",
-	                "http://work.alinpasol.com/appimage.org_assets/img/jar-file.png"
-	               ];
+	                "http://work.alinpasol.com/appimage.org_assets/img/jar-file.png"];
 	// the folder icon
-	folderIconURL = "http://work.alinpasol.com/appimage.org_assets/img/directory.png";
-	// the new app's icon (with a random query string so it doesn't get cached)
-	portableAppIconURL = "http://work.alinpasol.com/appimage.org_assets/img/application-x-executable.svg"
-	                + '?random=' + Math.random();
+	folderIcon = "http://work.alinpasol.com/appimage.org_assets/img/directory.png";
+	// the resulting app's icon (with a random query string so it doesn't get cached)
+	portableAppIcon = "images/logo3.svg" + '?random=' + Math.random();
 	// select the animation container
 	animationScene = document.getElementById("appBuildAnimationScene");
 	// select the button that starts the animation
@@ -122,18 +121,18 @@ function startAnimation () {
 	startButton.setAttribute("class", "btnActive");
 
 	/**
-	 * Create the AppImageKit <div>
+	 * Create the AppDir <div>
 	 */
 	// create a <div>
-	newAppImageKitDiv = document.createElement("div");
+	newAppDir = document.createElement("div");
 	// set an "id"
-	newAppImageKitDiv.setAttribute ("id", "appImageKitDiv");
+	newAppDir.setAttribute ("id", "AppDir");
 	// create a <heading> to be used as title
-	appImageKitHeading = document.createElement("h2");
+	AppDirHeading = document.createElement("h2");
 	// add text to the <heading>
-	appImageKitHeading.innerHTML = "AppImageKit";
-	// append the <heading> to the AppImageKit <div>
-	newAppImageKitDiv.appendChild(appImageKitHeading);
+	AppDirHeading.innerHTML = "AppDir";
+	// append the <heading> to the AppDir <div>
+	newAppDir.appendChild(AppDirHeading);
 	// create a <div> to hold the progress bar(s)
 	progressContainer = document.createElement("div");
 	// give it an "id"
@@ -150,7 +149,7 @@ function startAnimation () {
 	progressMessage.setAttribute("data-value", "0");
 	// add text to it
 	progressMessage.innerHTML = "Processing...";
-	// append the progress message to the AppImageKit <div>
+	// append the progress message to the AppDir <div>
 	progressContainer.appendChild(progressMessage);
 	// create a <progress> element
 	progressBar = document.createElement("progress");
@@ -172,28 +171,28 @@ function startAnimation () {
 	fallbackProgressBarContainer.appendChild(fallbackProgressBar);
 	// append the container to the <progress> element
 	progressBar.appendChild(fallbackProgressBarContainer);
-	// append the <progress> to the AppImageKit <div>
+	// append the <progress> to the AppDir <div>
 	progressContainer.appendChild(progressBar);
-	// append the <div> to the AppImageKit <div>
-	newAppImageKitDiv.appendChild(progressContainer);
-	// append the AppImageKit <div> to the scene
-	animationScene.appendChild(newAppImageKitDiv);
+	// append the <div> to the AppDir <div>
+	newAppDir.appendChild(progressContainer);
+	// append the AppDir <div> to the scene
+	animationScene.appendChild(newAppDir);
 
 	/**
 	 * Create a (re)sizing function
 	 */
 	// initialize the function below
-	resizeAppImageKit("init");
-	// resize the AppImageKit <div>
-	function resizeAppImageKit (param) {
+	resizeAppDir("init");
+	// resize the AppDir <div>
+	function resizeAppDir (param) {
 		// if the function is run for the first time (with the parameter "init")
 		if (param === "init") {
 			// declare the global variables used in the resizing function
-			window.appImageKitDiv = document.getElementById("appImageKitDiv");
+			window.AppDir = document.getElementById("AppDir");
 			window.windowWidth,
-			window.appImageKitWidth,
+			window.AppDirWidth,
 			window.leftOffset,
-			window.appImageKitHeight,
+			window.AppDirHeight,
 			window.bottomOffset,
 			window.imageWidth;
 		}
@@ -204,33 +203,33 @@ function startAnimation () {
 		// if the browser window is below 1001 pixels
 		if (windowWidth <= 299) {
 			// make the <div>'s width the same as the window's width
-			appImageKitWidth = windowWidth;
+			AppDirWidth = windowWidth;
 		}
 		// if the browser window is 300-1000 pixels
 		else if (windowWidth >= 300 && windowWidth <= 1000) {
 			// set a variable width
-			appImageKitWidth = 300 + ((windowWidth - 300) / 3);
+			AppDirWidth = 300 + ((windowWidth - 300) / 3);
 		} else {
 			// otherwise set a fixed width
-			appImageKitWidth = 300 + ((1001 - 300) / 3);
+			AppDirWidth = 300 + ((1001 - 300) / 3);
 		}
 		// update the width
-		appImageKitDiv.style.width = appImageKitWidth + "px";
+		AppDir.style.width = AppDirWidth + "px";
 		// calculate a left offset
-		leftOffset = (windowWidth - $(appImageKitDiv).outerWidth()) / 2;
+		leftOffset = (windowWidth - $(AppDir).outerWidth()) / 2;
 		// position the <div> in the center by adding a left offset
-		appImageKitDiv.style.left = leftOffset + "px";
+		AppDir.style.left = leftOffset + "px";
 		// calculate the height as 50% of the width
-		appImageKitHeight = appImageKitWidth * 0.50;
+		AppDirHeight = AppDirWidth * 0.50;
 		// add a height
-		appImageKitDiv.style.height = appImageKitHeight + "px";
+		AppDir.style.height = AppDirHeight + "px";
 		// if the function is run for the first time (with the parameter "init")
 		if (param === "init") {
 			// hide it by setting a bottom offset
-			appImageKitDiv.style.bottom = "-" + appImageKitHeight + "px";
+			AppDir.style.bottom = "-" + AppDirHeight + "px";
 		}
 		// calculate the icons' width
-		imageWidth = appImageKitWidth * 200 / (300 + ((1001 - 300) / 3));
+		imageWidth = AppDirWidth * 200 / (300 + ((1001 - 300) / 3));
 		// select the icons
 		fileIcons = document.querySelectorAll(".fileIcon");
 		// loop through the resulting array
@@ -244,59 +243,74 @@ function startAnimation () {
 		}
 		// run it each time the window is resized, without any parameters
 		if (window.addEventListener) {
-			window.addEventListener("resize", resizeAppImageKit, false);
+			window.addEventListener("resize", resizeAppDir, false);
 		} else if (window.attachEvent) {
-			window.attachEvent("resize", resizeAppImageKit);
+			window.attachEvent("resize", resizeAppDir);
 		}
 	}
 
 	/**
 	 * Create the icons
 	 */
-	// create an immediately-invoked function expression
-	(function() {
-		var i, fileIcon, folderIcon;
-		/* Create the file icons */
-		// loop through the array with file icons
-		for (i = 0; i < fileIconURLs.length; i++) {
-			// create an <image> element
+	// create the <img> elements with the file icons
+	createFileIcons(filesForTheCompiler);
+	createFileIcons(regularFiles);
+	createFileIcons(folderIcon);
+	// a function that takes the variables with URLs and creates the icons
+	function createFileIcons(param) {
+		var i, fileIcon;
+		// create a function that returns the type of a variable
+		function checkType(obj) {
+			return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
+		}
+		// use a switch statement to differentiate between arrays and strings
+		switch(checkType(param)){
+		// in case of an array, place the icons left and right
+		case "array":
+			// loop through the array with file icons
+			for (i = 0; i < param.length; i++) {
+				// create an <img> element
+				fileIcon = document.createElement("img");
+				// add an "src" attribute
+				fileIcon.setAttribute("src", param[i]);
+				// add a width
+				fileIcon.style.width = imageWidth + "px";
+				// if "i" is an even number...
+				if (i % 2 == 0) {
+					// place the image on the left
+					fileIcon.setAttribute("class", "fileIcon left");
+				// otherwise...
+				} else {
+					// place the image on the right
+					fileIcon.setAttribute("class", "fileIcon right");
+				}
+				// add a "margin-left" as half the width
+				fileIcon.style.marginLeft = parseInt("-" + imageWidth / 2) +"px";
+				// add a "margin-right" as half the width
+				fileIcon.style.marginRight = parseInt("-" + imageWidth / 2) +"px";
+				// append the image to the container element
+				animationScene.appendChild(fileIcon);
+			}
+		break;
+		// in case of a string (the folder icon), place the icon in the center
+		case "string":
+			// create an <img> element
 			fileIcon = document.createElement("img");
-			// add an "src" attribute
-			fileIcon.setAttribute("src", fileIconURLs[i]);
+			// set the "src" attribute
+			fileIcon.setAttribute("src", param);
+			// add a class
+			fileIcon.setAttribute("class", "fileIcon middle");
 			// add a width
 			fileIcon.style.width = imageWidth + "px";
-			// if "i" is an even number...
-			if (i % 2 == 0) {
-				// place the image on the left
-				fileIcon.setAttribute("class", "fileIcon left");
-			// otherwise...
-			} else {
-				// place the image on the right
-				fileIcon.setAttribute("class", "fileIcon right");
-			}
 			// add a "margin-left" as half the width
 			fileIcon.style.marginLeft = parseInt("-" + imageWidth / 2) +"px";
 			// add a "margin-right" as half the width
 			fileIcon.style.marginRight = parseInt("-" + imageWidth / 2) +"px";
 			// append the image to the container element
 			animationScene.appendChild(fileIcon);
+		break;
 		}
-		/* Create the folder icon */
-		// create an <img> element
-		folderIcon = document.createElement("img");
-		// set an "src" attribute
-		folderIcon.setAttribute("src", folderIconURL);
-		// add a class
-		folderIcon.setAttribute("class", "fileIcon middle");
-		// add a width
-		folderIcon.style.width = imageWidth + "px";
-		// add a "margin-left" as half the width
-		folderIcon.style.marginLeft = parseInt("-" + imageWidth / 2) +"px";
-		// add a "margin-right" as half the width
-		folderIcon.style.marginRight = parseInt("-" + imageWidth / 2) +"px";
-		// append the image to the container element
-		animationScene.appendChild(folderIcon);
-	})();
+	}
 
 	/**
 	 * Create the initial animations
@@ -332,8 +346,8 @@ function startAnimation () {
 	tlLeft.play();
 	// play the right instance
 	tlRight.play();
-	// animate the appImageKitDiv div
-	TweenMax.to(appImageKitDiv, 7, {bottom:"5%"});
+	// animate the AppDir div
+	TweenMax.to(AppDir, 7, {bottom:"5%"});
 
 	/**
 	 * Create a callback function for the 3 initial tweens
@@ -360,7 +374,7 @@ function startAnimation () {
 		TweenMax.to(document.getElementById("progress-status"), 5,
 		            {width:"100%", opacity:"1"});
 		// animate the <progress> element's value
-		TweenMax.to(document.querySelector("#appImageKitDiv progress"), 5,
+		TweenMax.to(document.querySelector("#AppDir progress"), 5,
 		            {value:"100"});
 		// create an IIFE
 		(function() {
@@ -388,8 +402,8 @@ function startAnimation () {
 	 * Create a callback function to raise the div
 	 */
 	function raiseDiv() {
-		// raise the appImageKit div
-		TweenMax.to(document.getElementById("appImageKitDiv"), 5,
+		// raise the AppDir div
+		TweenMax.to(document.getElementById("AppDir"), 5,
 		            {bottom:"80%", onComplete:createNewApp});
 	}
 
@@ -403,7 +417,7 @@ function startAnimation () {
 		// add an "id" attribute
 		newApp.setAttribute("id", "newApp");
 		// add an "src" attribute
-		newApp.setAttribute("src", portableAppIconURL);
+		newApp.setAttribute("src", portableAppIcon);
 		// add a bottom offset
 		newApp.style.bottom = "100%";
 		// make it invisible, temporarily
@@ -411,16 +425,16 @@ function startAnimation () {
 		// add a few event listeners
 		if (window.addEventListener) {
 			newApp.addEventListener("load", function() {
-			// ...flip the  AppImageKit <div>
-			TweenMax.to(document.getElementById("appImageKitDiv"),
+			// ...flip the  AppDir <div>
+			TweenMax.to(document.getElementById("AppDir"),
 			            1, {rotation:"-=180", onComplete:showNewApp});
 			}, false);
 			newApp.addEventListener("click", finishAnimation, false);
 			window.addEventListener("resize", positionNewApp, false);
 		} else if (window.attachEvent) {
 			newApp.attachEvent("onload", function() {
-			// ...flip the  AppImageKit <div>
-			TweenMax.to(document.getElementById("appImageKitDiv"),
+			// ...flip the  AppDir <div>
+			TweenMax.to(document.getElementById("AppDir"),
 			            1, {rotation:"-=180", onComplete:showNewApp});
 			});
 			newApp.attachEvent("click", finishAnimation);
@@ -441,8 +455,8 @@ function startAnimation () {
 		// drop the new app
 		TweenMax.to(document.getElementById("newApp"), 3, {bottom:0,
 		            ease:Bounce.easeOut});
-		// and then fade out the appImageKit div
-		TweenMax.to(document.getElementById("appImageKitDiv"), 5,
+		// and then fade out the AppDir div
+		TweenMax.to(document.getElementById("AppDir"), 5,
 		            {bottom:"+=20%", opacity:"0", delay:0.5});
 	}
 
@@ -451,8 +465,8 @@ function startAnimation () {
 	 */
 	function positionNewApp() {
 		var containerHeight, imageWidth, leftOffset;
-		// get the appImageKitDiv's height
-		containerHeight = $("#appImageKitDiv").outerHeight();
+		// get the AppDir's height
+		containerHeight = $("#AppDir").outerHeight();
 		// give the app a height
 		document.getElementById("newApp").style.height = containerHeight + "px";
 		// get the app's width
@@ -481,9 +495,9 @@ function startAnimation () {
 	 */
 	function wrapThingsUp() {
 		if (window.removeEventListener) {
-			window.removeEventListener("resize", resizeAppImageKit, false);
+			window.removeEventListener("resize", resizeAppDir, false);
 		} else if (window.detachEvent) {
-			window.detachEvent("resize", resizeAppImageKit);
+			window.detachEvent("resize", resizeAppDir);
 		}
 		if (window.removeEventListener) {
 			window.removeEventListener("resize", positionNewApp, false);
@@ -497,8 +511,8 @@ function startAnimation () {
 			newApp.detachEvent("onload", showNewApp);
 			newApp.detachEvent("click", finishAnimation);
 		}
-		// remove the AppImageKit <div>
-		$("#appImageKitDiv").remove();
+		// remove the AppDir <div>
+		$("#AppDir").remove();
 		// remove the app icon
 		$("#newApp").remove();
 

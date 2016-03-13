@@ -117,14 +117,14 @@ img.fileIcon {
 	left: 50%;
 }
 
-#appImageKitDiv {
+#AppDir {
 	border: 1px solid #ccc;
 	border-radius: 4px;
 	background-color: #fff;
 	z-index: 4;
 }
 
-#appImageKitDiv h2 {
+#AppDir h2 {
 	text-align: center;
 	font-variant: small-caps;
 	color:#fff;
