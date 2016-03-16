@@ -2,12 +2,11 @@
  * Overwrite the other stylesheets
  */
 .carousel-indicators {
-	z-index: 1;
+  z-index: 1;
 }
 
 .landing-page .full-background .info {
-	z-index: 2;
-
+  z-index: 2;
 }
 /* that's all */
 
@@ -15,270 +14,260 @@
 /**
  * Add more styling
  */
-* {
-	-webkit-box-sizing: border-box;
-	   -moz-box-sizing: border-box;
-	        box-sizing: border-box;
-}
-
 body {
-	font-size: 1em;
-	line-height: 1.4;
-	margin: auto;
-	min-width: 317px;
-	background-color: #ffffff;
-	overflow-x: hidden;
+  min-width: 317px;
 }
 
 #appBuildAnimationScene > * {
-	position: fixed;
-	z-index: 3;
+  position: fixed;
+  z-index: 3;
 }
 
 #animation-button-container {
-	margin: 100px auto;
-	text-align: center;
+  margin: 100px auto;
+  text-align: center;
 }
 
 #startAnimation {
-	display: inline-block;
-	color: #fff;
-	font-weight: bold;
-	background-color: #538fbe;
-	padding: 10px 32px;
-	font-size: large;
-	border: 1px solid #2d6898;
-	background-image: -webkit-linear-gradient(bottom, rgb(88,154,204) 0%,
-	                                          rgb(90,150,199) 100%);
-	background-image:    -moz-linear-gradient(bottom, rgb(88,154,204) 0%,
-	                                          rgb(90,150,199) 100%);
-	background-image:      -o-linear-gradient(bottom, rgb(88,154,204) 0%,
-	                                          rgb(90,150,199) 100%);
-	background-image:         linear-gradient(to top, rgb(88,154,204) 0%,
-	                                          rgb(90,150,199) 100%);
-	border-radius: 5px !important;
-	text-shadow: 0px -1px 0px rgba(0,0,0,0.5);
-	box-shadow: 0px 4px 4px #2b638f, 0px 3px 15px rgba(0,0,0,0.4),
-	            inset 0px 1px 0px rgba(255,255,255,0.3),
-	            inset 0px 0px 3px rgba(255,255,255,0.5);
-	-webkit-transition: all .1s ease-in-out;
-	   -moz-transition: all .1s ease-in-out;
-	        transition: all .1s ease-in-out;
+  display: inline-block;
+  color: #FFF;
+  font-weight: bold;
+  background-color: #538FBE;
+  padding: 10px 32px;
+  font-size: large;
+  border: 1px solid #2D6898;
+  background-image: -webkit-linear-gradient(bottom, rgb(88,154,204) 0%,
+                                            rgb(90,150,199) 100%);
+  background-image:    -moz-linear-gradient(bottom, rgb(88,154,204) 0%,
+                                            rgb(90,150,199) 100%);
+  background-image:      -o-linear-gradient(bottom, rgb(88,154,204) 0%,
+                                            rgb(90,150,199) 100%);
+  background-image:         linear-gradient(to top, rgb(88,154,204) 0%,
+                                            rgb(90,150,199) 100%);
+  border-radius: 5px !important;
+  text-shadow: 0px -1px 0px rgba(0,0,0,0.5);
+  box-shadow: 0px 4px 4px #2B638F, 0px 3px 15px rgba(0,0,0,0.4),
+              inset 0px 1px 0px rgba(255,255,255,0.3),
+              inset 0px 0px 3px rgba(255,255,255,0.5);
+  -webkit-transition: all .1s ease-in-out;
+     -moz-transition: all .1s ease-in-out;
+          transition: all .1s ease-in-out;
 }
 
 #startAnimation:hover {
-	background-image: -webkit-linear-gradient(bottom, rgb(79,142,191) 0%,
-	                                          rgb(102,166,214) 100%);
-	background-image:    -moz-linear-gradient(bottom, rgb(79,142,191) 0%,
-	                                          rgb(102,166,214) 100%);
-	background-image:      -o-linear-gradient(bottom, rgb(79,142,191) 0%,
-	                                          rgb(102,166,214) 100%);
-	background-image:         linear-gradient(to top, rgb(79,142,191) 0%,
-	                                          rgb(102,166,214) 100%);
+  background-image: -webkit-linear-gradient(bottom, rgb(79,142,191) 0%,
+                                            rgb(102,166,214) 100%);
+  background-image:    -moz-linear-gradient(bottom, rgb(79,142,191) 0%,
+                                            rgb(102,166,214) 100%);
+  background-image:      -o-linear-gradient(bottom, rgb(79,142,191) 0%,
+                                            rgb(102,166,214) 100%);
+  background-image:         linear-gradient(to top, rgb(79,142,191) 0%,
+                                            rgb(102,166,214) 100%);
 }
 
 #startAnimation:focus {
-	outline: none;
+  outline: none;
 }
 
 #startAnimation.btnActive {
-	box-shadow: 0px 2px 2px #2b638f, 0px 1px 6px rgba(0,0,0,0.4),
-	            inset 0px 1px 0px rgba(255,255,255,0.3),
-	            inset 0px 0px 3px rgba(255,255,255,0.5);
-	background-image: -webkit-linear-gradient(bottom, rgb(73,132,180) 0%,
-	                                          rgb(97,155,203) 100%);
-	background-image:    -moz-linear-gradient(bottom, rgb(73,132,180) 0%,
-	                                          rgb(97,155,203) 100%);
-	background-image:      -o-linear-gradient(bottom, rgb(73,132,180) 0%,
-	                                          rgb(97,155,203) 100%);
-	background-image:         linear-gradient(to top, rgb(73,132,180) 0%,
-	                                          rgb(97,155,203) 100%);
-	-webkit-transform: translate(0, 1px);
-	   -moz-transform: translate(0, 1px);
-	    -ms-transform: translate(0, 1px);
-	        transform: translate(0, 1px);
-	cursor: default;
-	padding: 10px 30px;
+  box-shadow: 0px 2px 2px #2B638F, 0px 1px 6px rgba(0,0,0,0.4),
+              inset 0px 1px 0px rgba(255,255,255,0.3),
+              inset 0px 0px 3px rgba(255,255,255,0.5);
+  background-image: -webkit-linear-gradient(bottom, rgb(73,132,180) 0%,
+                                            rgb(97,155,203) 100%);
+  background-image:    -moz-linear-gradient(bottom, rgb(73,132,180) 0%,
+                                            rgb(97,155,203) 100%);
+  background-image:      -o-linear-gradient(bottom, rgb(73,132,180) 0%,
+                                            rgb(97,155,203) 100%);
+  background-image:         linear-gradient(to top, rgb(73,132,180) 0%,
+                                            rgb(97,155,203) 100%);
+  -webkit-transform: translate(0, 1px);
+     -moz-transform: translate(0, 1px);
+      -ms-transform: translate(0, 1px);
+          transform: translate(0, 1px);
+  cursor: default;
+  padding: 10px 30px;
 }
 
 img.fileIcon {
-	bottom: 100%;
+  bottom: 100%;
 }
 
 .fileIcon.left {
-	left: 0;
+  left: 0;
 }
 
 .fileIcon.right {
-	right: 0;
+  right: 0;
 }
 
 .fileIcon.middle {
-	left: 50%;
+  left: 50%;
 }
 
 #AppDir {
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	background-color: #fff;
-	z-index: 4;
+  border: 1px solid #CCC;
+  border-radius: 4px;
+  background-color: #FFF;
+  z-index: 4;
 }
 
 #AppDir h2 {
-	text-align: center;
-	font-variant: small-caps;
-	color:#fff;
-	background-color:#fff;
-	text-shadow: #ccc 0 1px 0, #c9c9c9 0 2px 0, #bbb 0 3px 0, #b9b9b9 0 4px 0,
-	             #aaa 0 5px 0,rgba(0,0,0,.1) 0 6px 1px, rgba(0,0,0,.1) 0 0 5px,
-	             rgba(0,0,0,.3) 0 1px 3px, rgba(0,0,0,.15) 0 3px 5px,
-	             rgba(0,0,0,.2) 0 5px 10px, rgba(0,0,0,.2) 0 10px 10px,
-	             rgba(0,0,0,.1) 0 20px 20px;
+  text-align: center;
+  font-variant: small-caps;
+  color:#FFF;
+  background-color:#FFF;
+  text-shadow: #CCC 0 1px 0, #C9C9C9 0 2px 0, #BBB 0 3px 0, #B9B9B9 0 4px 0,
+               #AAA 0 5px 0,rgba(0,0,0,.1) 0 6px 1px, rgba(0,0,0,.1) 0 0 5px,
+               rgba(0,0,0,.3) 0 1px 3px, rgba(0,0,0,.15) 0 3px 5px,
+               rgba(0,0,0,.2) 0 5px 10px, rgba(0,0,0,.2) 0 10px 10px,
+               rgba(0,0,0,.1) 0 20px 20px;
 }
 
 #progress-container {
-	position: absolute;
-	bottom: 15%;
-	width: 95%;
-	margin: auto 2.5%;
+  position: absolute;
+  bottom: 15%;
+  width: 95%;
+  margin: auto 2.5%;
 }
 
 #progress-status {
-	color: #d9d9d9;
-	background-color: #fff;
-	text-shadow: rgba(255,255,255,0.1) -1px -1px 1px, rgba(0,0,0,0.5) 1px 1px 1px;
-	position: relative;
-	font-variant: small-caps;
+  color: #D9D9D9;
+  background-color: #FFF;
+  text-shadow: rgba(255,255,255,0.1) -1px -1px 1px, rgba(0,0,0,0.5) 1px 1px 1px;
+  position: relative;
+  font-variant: small-caps;
 }
 
 #progress-status[data-value]:after {
-	content: attr(data-value) '%';
-	color: #bfbfbf;
-	position: absolute;
-	right: 0;
-	text-shadow: initial;
+  content: attr(data-value) '%';
+  color: #BFBFBF;
+  position: absolute;
+  right: 0;
+  text-shadow: initial;
 }
 
 #progress-container progress {
-	left: 0;
-	height: 20px;
-	width: 100%;
+  left: 0;
+  height: 20px;
+  width: 100%;
 }
 
 progress[value] {
-	border: none;
-	background-color: whiteSmoke;
-	border-radius: 3px;
-	box-shadow: 0 2px 3px rgba(0,0,0,0.5) inset;
-	color: royalblue;
+  border: none;
+  background-color: #F5F5F5;
+  border-radius: 3px;
+  box-shadow: 0 2px 3px rgba(0,0,0,0.5) inset;
+  color: #4169E1;
 }
 
 progress[value]::-webkit-progress-bar {
-	background-color: whiteSmoke;
-	border-radius: 3px;
-	box-shadow: 0 2px 3px rgba(0,0,0,0.5) inset;
+  background-color: #F5F5F5;
+  border-radius: 3px;
+  box-shadow: 0 2px 3px rgba(0,0,0,0.5) inset;
 }
 
 progress[value]::-webkit-progress-value {
-	position: relative;
-	background-size: 35px 20px, 100% 100%, 100% 100%;
-	border-radius:3px;
+  position: relative;
+  background-size: 35px 20px, 100% 100%, 100% 100%;
+  border-radius:3px;
 }
 
 progress[value]::-webkit-progress-value:after {
-	content: '';
-	position: absolute;
-	width:5px;
-	height:5px;
-	top:7px;
-	right:7px;
-	background-color: white;
-	border-radius: 100%;
+  content: '';
+  position: absolute;
+  width:5px;
+  height:5px;
+  top:7px;
+  right:7px;
+  background-color: #FFF;
+  border-radius: 100%;
 }
+
 progress[value]::-moz-progress-bar {
-	background-image:-moz-linear-gradient(135deg,
-	                                      transparent,
-	                                      transparent 33%,
-	                                      rgba(0,0,0,0.1) 33%,
-	                                      rgba(0,0,0,0.1) 66%,
-	                                      transparent 66%),
-	                 -moz-linear-gradient(top,
-	                                      rgba(255, 255, 255, .25),
-	                                      rgba(0,0,0,0.2)),
-	                 -moz-linear-gradient(left, #f44, #09c);
-	background-image:linear-gradient(135deg,
-	                                 transparent,
-	                                 transparent 33%,
-	                                 rgba(0,0,0,0.1) 33%,
-	                                 rgba(0,0,0,0.1) 66%,
-	                                 transparent 66%),
-	                 linear-gradient(to bottom,
-	                                 rgba(255, 255, 255, .25),
-	                                 rgba(0,0,0,0.2)),
-	                 linear-gradient(to right, #f44, #09c);
-	background-size: 35px 20px, 100% 100%, 100% 100%;
-	border-radius:3px;
+  background-image:-moz-linear-gradient(135deg,
+                                        transparent,
+                                        transparent 33%,
+                                        rgba(0,0,0,0.1) 33%,
+                                        rgba(0,0,0,0.1) 66%,
+                                        transparent 66%),
+                   -moz-linear-gradient(top,
+                                        rgba(255, 255, 255, .25),
+                                        rgba(0,0,0,0.2)),
+                   -moz-linear-gradient(left, #F44, #09C);
+  background-image:linear-gradient(135deg,
+                                   transparent,
+                                   transparent 33%,
+                                   rgba(0,0,0,0.1) 33%,
+                                   rgba(0,0,0,0.1) 66%,
+                                   transparent 66%),
+                   linear-gradient(to bottom,
+                                   rgba(255, 255, 255, .25),
+                                   rgba(0,0,0,0.2)),
+                   linear-gradient(to right, #F44, #09C);
+  background-size: 35px 20px, 100% 100%, 100% 100%;
+  border-radius:3px;
 }
 
 #fallback-progress-bar {
-	background-color: whiteSmoke;
-	border-radius: 3px;
-	box-shadow: 0 2px 3px rgba(0,0,0,0.5) inset;
-	display: block;
-	width: 100%;
-	height:20px;
+  background-color: #F5F5F5;
+  border-radius: 3px;
+  box-shadow: 0 2px 3px rgba(0,0,0,0.5) inset;
+  display: block;
+  width: 100%;
+  height:20px;
 }
 
 #fallback-progress-bar > span {
-	background-color: royalblue;
-	border-radius: 3px;
-	display: block;
-	height: 100%;
-	text-indent: -9999px;
+  background-color: #4169E1;
+  border-radius: 3px;
+  display: block;
+  height: 100%;
+  text-indent: -9999px;
 }
 
 #progress-container progress::-webkit-progress-value {
-	background-image:-webkit-linear-gradient(135deg,
-	                                         transparent,
-	                                         transparent 33%,
-	                                         rgba(0,0,0,0.1) 33%,
-	                                         rgba(0,0,0,0.1) 66%,
-	                                         transparent 66%),
-	                 -webkit-linear-gradient(top,
-	                                         rgba(255, 255, 255, .25),
-	                                         rgba(0,0,0,0.2)),
-	                 -webkit-linear-gradient(left, #f44, #09c);
-	background-image:linear-gradient(135deg,
-	                                 transparent,
-	                                 transparent 33%,
-	                                 rgba(0,0,0,0.1) 33%,
-	                                 rgba(0,0,0,0.1) 66%,
-	                                 transparent 66%),
-	                 linear-gradient(to bottom,
-	                                 rgba(255, 255, 255, .25),
-	                                 rgba(0,0,0,0.2)),
-	                 linear-gradient(to right, #f44, #09c);
+  background-image:-webkit-linear-gradient(135deg,
+                                           transparent,
+                                           transparent 33%,
+                                           rgba(0,0,0,0.1) 33%,
+                                           rgba(0,0,0,0.1) 66%,
+                                           transparent 66%),
+                   -webkit-linear-gradient(top,
+                                           rgba(255, 255, 255, .25),
+                                           rgba(0,0,0,0.2)),
+                   -webkit-linear-gradient(left, #F44, #09C);
+  background-image:linear-gradient(135deg,
+                                   transparent,
+                                   transparent 33%,
+                                   rgba(0,0,0,0.1) 33%,
+                                   rgba(0,0,0,0.1) 66%,
+                                   transparent 66%),
+                   linear-gradient(to bottom,
+                                   rgba(255, 255, 255, .25),
+                                   rgba(0,0,0,0.2)),
+                   linear-gradient(to right, #F44, #09C);
 }
 
 #progress-container progress::-moz-progress-bar {
-	background-image:-moz-linear-gradient(135deg,
-	                                      transparent,
-	                                      transparent 33%,
-	                                      rgba(0,0,0,0.1) 33%,
-	                                      rgba(0,0,0,0.1) 66%,
-	                                      transparent 66%),
-	                 -moz-linear-gradient(top,
-	                                      rgba(255, 255, 255, .25),
-	                                      rgba(0,0,0,0.2)),
-	                 -moz-linear-gradient(left, #f44, #09c);
-	background-image:linear-gradient(135deg,
-	                                 transparent,
-	                                 transparent 33%,
-	                                 rgba(0,0,0,0.1) 33%,
-	                                 rgba(0,0,0,0.1) 66%,
-	                                 transparent 66%),
-	                 linear-gradient(to bottom,
-	                                rgba(255, 255, 255, .25),
-	                                rgba(0,0,0,0.2)),
-	                 linear-gradient(to right, #f44, #09c);
+  background-image:-moz-linear-gradient(135deg,
+                                        transparent,
+                                        transparent 33%,
+                                        rgba(0,0,0,0.1) 33%,
+                                        rgba(0,0,0,0.1) 66%,
+                                        transparent 66%),
+                   -moz-linear-gradient(top,
+                                        rgba(255, 255, 255, .25),
+                                        rgba(0,0,0,0.2)),
+                   -moz-linear-gradient(left, #F44, #09C);
+  background-image:linear-gradient(135deg,
+                                   transparent,
+                                   transparent 33%,
+                                   rgba(0,0,0,0.1) 33%,
+                                   rgba(0,0,0,0.1) 66%,
+                                   transparent 66%),
+                   linear-gradient(to bottom,
+                                  rgba(255, 255, 255, .25),
+                                  rgba(0,0,0,0.2)),
+                   linear-gradient(to right, #F44, #09C);
 }
